@@ -1,8 +1,9 @@
-package data;
+package main.data;
 
 
-import model.Movie;
-import model.MovieType;
+import main.exception.ApplicationException;
+import main.model.Movie;
+import main.model.MovieType;
 
 import java.util.Arrays;
 import java.util.List;
@@ -35,7 +36,12 @@ public class MovieData {
     }
 
     public Movie getMovie(String movieId) {
-        return moviesMap.get(movieId);
+        Movie movie = moviesMap.get(movieId);
+        if (movie != null) {
+            return movie;
+        } else {
+            throw new ApplicationException(String.format("Movie not found: %s", movieId));
+        }
     }
 
 }

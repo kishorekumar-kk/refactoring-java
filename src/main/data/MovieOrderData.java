@@ -1,6 +1,6 @@
-package data;
+package main.data;
 
-import model.MovieRental;
+import main.model.MovieRental;
 
 import java.util.List;
 import java.util.Map;

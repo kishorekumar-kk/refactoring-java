@@ -1,4 +1,4 @@
-package model;
+package main.model;
 
 import java.util.LinkedHashMap;
 import java.util.Map;
@@ -21,4 +21,8 @@ public class Cart {
         return cartItems;
     }
 
+    @Override
+    public String toString() {
+        return customer +", cartItems:" + cartItems.isEmpty();
+    }
 }
