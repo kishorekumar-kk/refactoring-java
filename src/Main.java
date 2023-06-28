@@ -1,3 +1,7 @@
+import model.Customer;
+import model.MovieRental;
+import service.RentalInfo;
+
 import java.util.Arrays;
 
 public class Main {
@@ -12,5 +16,6 @@ public class Main {
     }
 
     System.out.println("Success");
+    System.out.println(result);
   }
 }
