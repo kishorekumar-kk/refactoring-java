@@ -19,3 +19,17 @@ Note: the Git history must be included.
 javac src/*.java
 java -cp src Main
 ```
+
+# Points considered when refactoring
+
+* Added packages based on functionality of classes
+* Overall application is around buying/renting products for specific period of time. So, following functionalities added with Order interface.
+    * Create cart
+    * Add product to cart
+    * Delete product from cart
+    * Checkout
+* Abstract class product added with pricing calculation method. There is a presumption that each product category has a different pricing approach. Therefore, the mechanism used to determine prices can be changed depending on the category of the product.
+* Introduced Enum type for movie category as NEW, REGULAR and CHILDREN.
+* As the pricing approach depends on type of movie, added calculate rentals method to MovieType enum.
+* Movie is a special type of product, rented for specific span of time. So, added MovieOrder class which will be used for checking out movies.
+* Intermediary model cart is required while selecting multiple products. Hence added Cart and CartItem which is mapped to customer.
