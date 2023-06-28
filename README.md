@@ -33,3 +33,5 @@ java -cp src Main
 * As the pricing approach depends on type of movie, added calculate rentals method to MovieType enum.
 * Movie is a special type of product, rented for specific span of time. So, added MovieOrder class which will be used for checking out movies.
 * Intermediary model cart is required while selecting multiple products. Hence added Cart and CartItem which is mapped to customer.
+* Added MovieOrder data class with the responsibility to save the rentals made by the user.
+* Updated certain member variables of customer based on the scope.
