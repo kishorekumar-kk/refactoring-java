@@ -5,7 +5,6 @@ import java.util.UUID;
 public class Customer {
     private final String name;
 
-
     private final String customerGUID;
 
     private Integer loyaltyPoints;
@@ -31,5 +30,10 @@ public class Customer {
 
     public Integer getLoyaltyPoints() {
         return loyaltyPoints;
+    }
+
+    @Override
+    public String toString() {
+        return "name:" + name;
     }
 }

@@ -1,6 +1,7 @@
 package main.data;
 
 
+import main.exception.ApplicationException;
 import main.model.Movie;
 import main.model.MovieType;
 
@@ -35,7 +36,12 @@ public class MovieData {
     }
 
     public Movie getMovie(String movieId) {
-        return moviesMap.get(movieId);
+        Movie movie = moviesMap.get(movieId);
+        if (movie != null) {
+            return movie;
+        } else {
+            throw new ApplicationException(String.format("Movie not found: %s", movieId));
+        }
     }
 
 }

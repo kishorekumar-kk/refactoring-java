@@ -1,12 +1,15 @@
 package main.service;
 
 import main.data.MovieOrderData;
+import main.exception.OrderProcessingException;
 import main.model.*;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.atomic.AtomicInteger;
 import java.util.concurrent.atomic.AtomicReference;
+
+import static main.util.ValidationUtils.validateCartForCheckout;
 
 public class MovieOrder implements Order {
 
@@ -18,9 +21,14 @@ public class MovieOrder implements Order {
      */
     @Override
     public String checkout(Cart cart) {
+        if(validateCartForCheckout(cart)) {
+            throw new OrderProcessingException(String.format("Invalid cart: %s", cart));
+        }
         AtomicReference<Double> totalAmount = new AtomicReference<>((double) 0);
         AtomicInteger frequentEnterPoints = new AtomicInteger();
+
         StringBuilder result = new StringBuilder("Rental Record for " + cart.getCustomer().getName() + "\n");
+
         List<MovieRental> rentalsCheckedOut = new ArrayList<>();
         for (CartItem item : cart.getCartItems().values()) {
             Movie movie = (Movie) item.getItem();

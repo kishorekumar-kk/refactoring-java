@@ -21,4 +21,8 @@ public class Cart {
         return cartItems;
     }
 
+    @Override
+    public String toString() {
+        return customer +", cartItems:" + cartItems.isEmpty();
+    }
 }
