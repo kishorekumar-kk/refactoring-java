@@ -33,10 +33,8 @@ public class MovieOrder implements Order {
         List<MovieRental> rentalsCheckedOut = new ArrayList<>();
         for (CartItem item : cart.getCartItems().values()) {
             Movie movie = (Movie) item.getItem();
-            MovieType type = movie.getType();
-            double amount = type.calculateRentals(item.getQuantity());
-            frequentEnterPoints.getAndIncrement();
-            if (type == MovieType.NEW && item.getQuantity() > 2) frequentEnterPoints.getAndIncrement();
+            double amount = movie.calculatePrice(item.getQuantity());
+            frequentEnterPoints.addAndGet(movie.getLoyaltyPoints(item.getQuantity()));
             result.append("\t").append(movie.getTitle()).append("\t").append(amount).append("\n");
             totalAmount.updateAndGet(v -> v + amount);
             rentalsCheckedOut.add(new MovieRental(movie.getMovieId(), item.getQuantity()));

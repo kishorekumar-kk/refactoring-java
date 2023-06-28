@@ -28,4 +28,12 @@ public class Movie extends Product {
     public double calculatePrice(int quantity) {
         return type.calculateRentals(quantity);
     }
+
+    @Override
+    public int getLoyaltyPoints(int quantity) {
+        if (quantity > 2 && type == MovieType.NEW) {
+            return 2;
+        }
+        return super.getLoyaltyPoints(quantity);
+    }
 }

@@ -12,7 +12,6 @@ import java.util.Map;
 /**
  * Interface for creation of cart, updation of movie to cart and checking out products from application.
  */
-@FunctionalInterface
 public interface Order {
 
     /**
