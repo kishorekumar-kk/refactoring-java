@@ -17,7 +17,8 @@ public class MovieOrder implements Order {
      * Over-ridden method responsible for completing checkout
      * of movies from cart.
      * @param cart: Cart which has to be checked out
-     * @return: value that is used to print receipt for order
+     * @return value that is used to print receipt for order
+     * @throws OrderProcessingException: If the cart is in invalid state and can't be checked out
      */
     @Override
     public String checkout(Cart cart) {
