@@ -1,7 +1,11 @@
 import data.MovieData;
+import data.MovieOrderData;
 import model.Cart;
 import model.Customer;
+import model.MovieRental;
 import service.MovieOrder;
+
+import java.util.List;
 
 
 public class Main {
@@ -21,6 +25,15 @@ public class Main {
 
         if (!result.equals(expected)) {
             throw new AssertionError("Expected: " + System.lineSeparator() + String.format(expected) + System.lineSeparator() + System.lineSeparator() + "Got: " + System.lineSeparator() + result);
+        }
+
+        List<MovieRental> rentals = MovieOrderData.getInstance().getOrderData(customer.getCustomerGUID());
+        if(rentals.size() != 2) {
+            throw new AssertionError(String.format("Expected: 2 rentals for customer %s, Got %d rentals", customer.getName(), rentals.size()));
+        }
+
+        if(customer.getLoyaltyPoints() != 2) {
+            throw new AssertionError(String.format("Expected: 2 loyalty points for customer %s, Got %d", customer.getName(), customer.getLoyaltyPoints()));
         }
 
         System.out.println("Success");

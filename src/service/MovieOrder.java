@@ -1,7 +1,10 @@
 package service;
 
+import data.MovieOrderData;
 import model.*;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.concurrent.atomic.AtomicInteger;
 import java.util.concurrent.atomic.AtomicReference;
 
@@ -18,6 +21,7 @@ public class MovieOrder implements Order {
         AtomicReference<Double> totalAmount = new AtomicReference<>((double) 0);
         AtomicInteger frequentEnterPoints = new AtomicInteger();
         StringBuilder result = new StringBuilder("Rental Record for " + cart.getCustomer().getName() + "\n");
+        List<MovieRental> rentalsCheckedOut = new ArrayList<>();
         for (CartItem item : cart.getCartItems().values()) {
             Movie movie = (Movie) item.getItem();
             MovieType type = movie.getType();
@@ -26,10 +30,13 @@ public class MovieOrder implements Order {
             if (type == MovieType.NEW && item.getQuantity() > 2) frequentEnterPoints.getAndIncrement();
             result.append("\t").append(movie.getTitle()).append("\t").append(amount).append("\n");
             totalAmount.updateAndGet(v -> v + amount);
+            rentalsCheckedOut.add(new MovieRental(movie.getMovieId(), item.getQuantity()));
         }
         result.append("Amount owed is ").append(totalAmount.get()).append("\n");
         result.append("You earned ").append(frequentEnterPoints.get()).append(" frequent points\n");
         cart.getCartItems().clear();
+        cart.getCustomer().addLoyaltyPoints(frequentEnterPoints.get());
+        MovieOrderData.getInstance().addMovieOrderData(cart.getCustomer().getCustomerGUID(), rentalsCheckedOut);
         return result.toString();
     }
 
