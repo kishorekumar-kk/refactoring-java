@@ -22,7 +22,7 @@ java -cp src Main
 
 # Points considered when refactoring
 
-* Added packages based on functionality of classes
+* Added packages with classes grouped based on functionality and scope
 * Overall application is around buying/renting products for specific period of time. So, following functionalities added with Order interface.
     * Create cart
     * Add product to cart
