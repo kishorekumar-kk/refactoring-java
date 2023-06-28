@@ -35,3 +35,5 @@ java -cp src main.Main
 * Intermediary main.model cart is required while selecting multiple products. Hence added Cart and CartItem which is mapped to customer.
 * Added MovieOrder main.data class with the responsibility to save the rentals made by the user.
 * Updated certain member variables of customer based on the scope.
+* Added application specific exceptions used for various purposes in application.
+* Added validation methods for processing an order.
