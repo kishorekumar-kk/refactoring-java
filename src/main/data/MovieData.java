@@ -1,8 +1,8 @@
-package data;
+package main.data;
 
 
-import model.Movie;
-import model.MovieType;
+import main.model.Movie;
+import main.model.MovieType;
 
 import java.util.Arrays;
 import java.util.List;

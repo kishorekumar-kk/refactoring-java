@@ -1,9 +1,11 @@
-import data.MovieData;
-import data.MovieOrderData;
-import model.Cart;
-import model.Customer;
-import model.MovieRental;
-import service.MovieOrder;
+package main;
+
+import main.data.MovieData;
+import main.data.MovieOrderData;
+import main.model.Cart;
+import main.model.Customer;
+import main.model.MovieRental;
+import main.service.MovieOrder;
 
 import java.util.List;
 

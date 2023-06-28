@@ -1,4 +1,4 @@
-package model;
+package main.model;
 
 /**
  * Enum class that defines the category of movies rented

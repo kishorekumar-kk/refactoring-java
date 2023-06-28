@@ -1,7 +1,7 @@
-package service;
+package main.service;
 
-import data.MovieOrderData;
-import model.*;
+import main.data.MovieOrderData;
+import main.model.*;
 
 import java.util.ArrayList;
 import java.util.List;

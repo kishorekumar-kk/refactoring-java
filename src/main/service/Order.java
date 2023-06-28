@@ -1,9 +1,9 @@
-package service;
+package main.service;
 
-import model.Cart;
-import model.CartItem;
-import model.Customer;
-import model.Product;
+import main.model.Cart;
+import main.model.CartItem;
+import main.model.Customer;
+import main.model.Product;
 
 import java.util.Map;
 

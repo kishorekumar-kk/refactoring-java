@@ -1,4 +1,4 @@
-package model;
+package main.model;
 
 public class Movie extends Product {
     private final String movieId;

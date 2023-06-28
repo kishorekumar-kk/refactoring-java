@@ -1,4 +1,4 @@
-package model;
+package main.model;
 
 /**
  * Abstract class of product which is used
