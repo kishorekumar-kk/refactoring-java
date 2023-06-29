@@ -16,7 +16,7 @@ public abstract class Product {
 
     abstract double calculatePrice(int quantity);
 
-    public int getLoyaltyPoints(int quantity){
+    public int getLoyaltyPoints(int quantity) {
         return 1;
     }
 

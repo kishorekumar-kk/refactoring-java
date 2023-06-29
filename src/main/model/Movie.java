@@ -3,7 +3,7 @@ package main.model;
 public class Movie extends Product {
     private final String movieId;
     private final String title;
-    private final MovieType type;
+    private MovieType type;
 
     public Movie(String movieId, String title, MovieType type) {
         super(movieId);
@@ -22,6 +22,10 @@ public class Movie extends Product {
 
     public MovieType getType() {
         return type;
+    }
+
+    public void setType(MovieType type) {
+        this.type = type;
     }
 
     @Override

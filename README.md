@@ -32,8 +32,11 @@ java -cp src main.Main
 * Introduced Enum type for movie category as NEW, REGULAR and CHILDREN.
 * As the pricing approach depends on type of movie, added calculate rentals method to MovieType enum.
 * Movie is a special type of product, rented for specific span of time. So, added MovieOrder class which will be used for checking out movies.
-* Intermediary main.model cart is required while selecting multiple products. Hence added Cart and CartItem which is mapped to customer.
-* Added MovieOrder main.data class with the responsibility to save the rentals made by the user.
+* Intermediary model cart is required while selecting multiple products. Hence added Cart and CartItem which is mapped to customer.
+* Added MovieOrder data class with the responsibility to save the rentals made by the user.
+* Classes such as MovieRental are made immutable, keeping in mind that it shouldn't be altered once order is executed.
+* MovieData and MovieOrderData classes are added as singleton class which acts as source of data for application.
 * Updated certain member variables of customer based on the scope.
 * Added application specific exceptions used for various purposes in application.
 * Added validation methods for processing an order.
+* Added additional test cases to validate the rental data from MovieOrderData after customer checks out movie.
