@@ -1,4 +1,4 @@
-package main.util;
+package main.utils;
 
 import main.model.Cart;
 

@@ -7,7 +7,9 @@ import main.model.MovieType;
 
 import java.util.Arrays;
 import java.util.List;
+import java.util.Optional;
 import java.util.concurrent.ConcurrentHashMap;
+import java.util.stream.Stream;
 
 /**
  * Data class holding map of movies used wide across this application
@@ -33,6 +35,26 @@ public class MovieData {
             instance = new MovieData();
         }
         return instance;
+    }
+
+    public boolean containsMovie(String movieId) {
+        return moviesMap.containsKey(movieId);
+    }
+
+    public void addMovie(Movie movie) {
+        moviesMap.put(movie.getMovieId(), movie);
+    }
+
+    public Stream<Movie> fetchUnDeletedMovies() {
+        return moviesMap.values().stream().filter(movie -> !movie.isDeleted());
+    }
+
+    public Stream<Movie> fetchAllMovies() {
+        return moviesMap.values().stream();
+    }
+
+    public Optional<Movie> findMovieByMovieId(String movieId) {
+        return Optional.ofNullable(moviesMap.get(movieId));
     }
 
     public Movie getMovie(String movieId) {

@@ -96,6 +96,35 @@ public interface Order {
     }
 
     /**
+     * Update product by quantity in cart
+     *
+     * @param cart:     Cart from which product has to be removed
+     * @param item:     Product which has to be removed
+     * @param quantity: Quantity of product that has to be updated
+     * @throws OrderProcessingException:  When cart or product is invalid
+     * @throws InvalidParameterException: When quantity is invalid
+     */
+    default void updateProductToCart(Cart cart, Product item, int quantity) {
+        if (cart == null || item == null) {
+            throw new OrderProcessingException("Cart/Product cannot be null");
+        } else if (quantity <= 0) {
+            throw new InvalidParameterException("Quantity has to be greater than zero");
+        }
+        Map<String, CartItem> cartItems = cart.getCartItems();
+        String itemId = item.getId();
+        if (cartItems.containsKey(itemId)) {
+            cartItems.get(itemId).setQuantity(quantity);
+        }
+    }
+
+    /**
+     * Method used to retrieve cart information
+     * @param cart Object of cart whose information has to be retrieved
+     * @return String value with information of cart
+     */
+    String getCartInformation(Cart cart);
+
+    /**
      * Method responsible for completing checkout
      * of products from cart.
      *

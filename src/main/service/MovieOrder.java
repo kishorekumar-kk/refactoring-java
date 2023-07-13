@@ -9,9 +9,29 @@ import java.util.List;
 import java.util.concurrent.atomic.AtomicInteger;
 import java.util.concurrent.atomic.AtomicReference;
 
-import static main.util.ValidationUtils.validateCartForCheckout;
+import static main.utils.ValidationUtils.validateCartForCheckout;
 
 public class MovieOrder implements Order {
+
+    /**
+     * Over-ridden method to get cart information for a customer
+     * @param cart Object of cart whose information has to be retrieved
+     * @return String value showing cart information
+     */
+    @Override
+    public String getCartInformation(Cart cart) {
+        AtomicReference<Double> cartValue = new AtomicReference<>((double) 0);
+        StringBuilder result = new StringBuilder("Cart information for " + cart.getCustomer().getName() + "\n");
+        for (CartItem item : cart.getCartItems().values()) {
+            Movie movie = (Movie) item.getItem();
+            MovieType type = movie.getType();
+            double amount = type.calculateRentals(item.getQuantity());
+            result.append("\t").append(movie.getTitle()).append("\t - ").append(item.getQuantity()).append(" days\t- ").append(amount).append("\n");
+            cartValue.updateAndGet(v -> v + amount);
+        }
+        result.append("Total cart value is ").append(cartValue.get()).append("\n");
+        return result.toString();
+    }
 
     /**
      * Over-ridden method responsible for completing checkout

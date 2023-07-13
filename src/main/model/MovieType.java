@@ -21,6 +21,18 @@ public enum MovieType {
         this.tariffRate = tariffRate;
     }
 
+    public double getBasePrice() {
+        return basePrice;
+    }
+
+    public double getBaseDays() {
+        return baseDays;
+    }
+
+    public double getTariffRate() {
+        return tariffRate;
+    }
+
     /**
      * Method to calculate the movie rent based
      * on no of days it is rented for
