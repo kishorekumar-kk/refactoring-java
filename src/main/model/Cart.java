@@ -25,4 +25,8 @@ public class Cart {
     public String toString() {
         return customer +", cartItems:" + cartItems.isEmpty();
     }
+
+    public Boolean isCartInCheckoutState() {
+        return !(!this.getCartItems().isEmpty() && this.getCustomer() != null);
+    }
 }

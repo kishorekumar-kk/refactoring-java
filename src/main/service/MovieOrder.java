@@ -9,8 +9,6 @@ import java.util.List;
 import java.util.concurrent.atomic.AtomicInteger;
 import java.util.concurrent.atomic.AtomicReference;
 
-import static main.utils.ValidationUtils.validateCartForCheckout;
-
 public class MovieOrder implements Order {
 
     /**
@@ -42,7 +40,7 @@ public class MovieOrder implements Order {
      */
     @Override
     public String checkout(Cart cart) {
-        if(validateCartForCheckout(cart)) {
+        if(cart.isCartInCheckoutState()) {
             throw new OrderProcessingException(String.format("Invalid cart: %s", cart));
         }
         AtomicReference<Double> totalAmount = new AtomicReference<>((double) 0);
